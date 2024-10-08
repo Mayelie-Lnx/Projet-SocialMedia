@@ -1,0 +1,118 @@
+body {
+  background-color: #241c1c;
+}
+body .App {
+  background-color: white;
+  border-radius: 5px;
+  width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+body img {
+  width: 48%;
+  margin: 3rem;
+}
+body .container {
+  padding: 2rem 0;
+}
+body h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+body .forms {
+  display: flex;
+  justify-content: space-evenly;
+}
+hr {
+  border: 0.5px solid #241c1c;
+  opacity: 100%;
+}
+body input {
+  margin-bottom: 2rem;
+}
+form .form-control {
+  border-color: #241c1c;
+  border-radius: 4px;
+}
+body .form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+body .div-link {
+  display: flex;
+  align-items: center;
+}
+body .div-link a {
+  text-decoration: none;
+  text-align: center;
+}
+body .div-link a:hover {
+  background-color: #7a7171;
+  color: white;
+}
+.form button,
+.div-link a {
+  border: 1.5px solid #7a7171;
+  width: 8rem;
+  padding: 0.6rem 0;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.form button {
+  background-color: #7a7171;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form button:hover,
+.div-link a {
+  background-color: white;
+  border: 1.5px solid #7a7171;
+  color: #7a7171;
+}
+
+@media screen and (max-width: 1024px) {
+  body .App {
+    width: 40rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body .App {
+    width: 75%;
+  }
+  body h1 {
+    font-size: 1.6rem;
+  }
+  body .forms {
+    flex-direction: column;
+    align-items: center;
+  }
+  body .form {
+    width: 80%;
+  }
+  hr {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 425px) {
+  body .App {
+    width: 90%;
+  }
+  body h1 {
+    font-size: 1.4rem;
+  }
+  .form-control {
+    font-size: 0.8rem;
+  }
+  hr {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 375px) {
+  body .form {
+    width: 85%;
+  }
+}
