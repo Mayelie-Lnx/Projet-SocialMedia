@@ -76,3 +76,15 @@ exports.deletePost = async (req, res, next) => {
       .json({ message: "Erreur lors de la suppression de la publication" });
   }
 };
+
+exports.getAllPosts = async (req, res, next) => {
+  try {
+    const allPosts = await Post.find().sort({ created: -1 }); // Récupère les posts par ordre décroissant de création
+    res.status(200).json(allPosts); // Renvoie tous les posts sous forme de JSON
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la récupération des publications",
+      error,
+    });
+  }
+};

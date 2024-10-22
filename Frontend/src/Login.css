@@ -1,19 +1,38 @@
-body {
-  background-color: #241c1c;
+/* #root {
+  height: 60vw;
 }
-body .App {
+div .App {
+  height: auto;
+} */
+/* body {
+   background-color: #241c1c; 
+}*/
+main {
+  /* background-color: #241c1c; */
+  background-image: url("https://images.unsplash.com/photo-1658847412035-2ae0d3d5c364?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-size: cover;
+  /* height: 100vh; */
+}
+main .App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+main .container-login {
   background-color: white;
   border-radius: 5px;
   width: 50rem;
   margin-left: auto;
   margin-right: auto;
+  padding: 2rem;
+  opacity: 0.92;
 }
-body img {
-  width: 48%;
-  margin: 3rem;
+main .container-login img {
+  width: 70%;
 }
-body .container {
-  padding: 2rem 0;
+main .container-login {
+  padding: 1rem;
 }
 body h1 {
   text-align: center;
@@ -36,7 +55,7 @@ form .form-control {
   border-color: #241c1c;
   border-radius: 4px;
 }
-body .form {
+body .form-login {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -53,7 +72,7 @@ body .div-link a:hover {
   background-color: #7a7171;
   color: white;
 }
-.form button,
+form .btn-primary,
 .div-link a {
   border: 1.5px solid #7a7171;
   width: 8rem;
@@ -61,12 +80,12 @@ body .div-link a:hover {
   border-radius: 4px;
   font-weight: 700;
 }
-.form button {
+form .btn-primary {
   background-color: #7a7171;
   margin-left: auto;
   margin-right: auto;
 }
-.form button:hover,
+form .btn-primary:hover,
 .div-link a {
   background-color: white;
   border: 1.5px solid #7a7171;
@@ -74,13 +93,13 @@ body .div-link a:hover {
 }
 
 @media screen and (max-width: 1024px) {
-  body .App {
+  main .container-login {
     width: 40rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  body .App {
+  main .container-login {
     width: 75%;
   }
   body h1 {
@@ -90,7 +109,7 @@ body .div-link a:hover {
     flex-direction: column;
     align-items: center;
   }
-  body .form {
+  body .form-login {
     width: 80%;
   }
   hr {
@@ -98,7 +117,7 @@ body .div-link a:hover {
   }
 }
 @media screen and (max-width: 425px) {
-  body .App {
+  main .container-login {
     width: 90%;
   }
   body h1 {
@@ -112,7 +131,7 @@ body .div-link a:hover {
   }
 }
 @media screen and (max-width: 375px) {
-  body .form {
+  body .form-login {
     width: 85%;
   }
 }

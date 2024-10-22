@@ -8,6 +8,9 @@ const multer = require("../middleware/multer.js");
 // Route pour la création d'une publication
 router.post("/", authMiddleware, multer, postController.createPost);
 
+// Route pour récupérer toutes les publications
+router.get("/", authMiddleware, postController.getAllPosts);
+
 // Route pour mettre un jour une publication
 router.put(
   "/:id",

@@ -1,0 +1,40 @@
+.home-main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.navbar {
+  padding: 0.5rem 1rem;
+  background-color: #241c1c !important;
+}
+.navbar-nav .nav-link {
+  color: white;
+}
+nav img {
+  width: 15%;
+}
+nav .navbar-collapse .btn {
+  border-color: white;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+}
+nav .navbar-collapse .btn:hover {
+  border-color: white;
+  background-color: white;
+  color: black;
+}
+nav .navbar-toggler {
+  border: none;
+}
+nav .navbar-toggler-icon::after {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+@media screen and (max-width: 991px) {
+  .navbar {
+    display: inline;
+  }
+}
+.home-main .content {
+  background-color: white;
+}

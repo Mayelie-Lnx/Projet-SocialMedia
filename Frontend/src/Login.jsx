@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
@@ -6,6 +7,7 @@ function LoginForm() {
   // Gérer les états pour les champs du formulaire
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Hook pour la navigation
 
   // Fonction de soumission du formulaire de login
   const handleSubmit = async (e) => {
@@ -23,28 +25,28 @@ function LoginForm() {
 
       if (response.ok) {
         const data = await response.json();
-        // Gérer la réponse, par exemple, stocker le token
-        console.log("Login successful:", data);
+        // Stocker le token dans le localStorage
+        localStorage.setItem("authToken", data.authToken);
+        console.log("Connexion réussi:", data);
+        // Rediriger vers /home si la connexion est réussie
+        navigate("/home");
       } else {
-        console.error("Login failed");
+        console.error("Echec connexion");
       }
     } catch (error) {
-      console.error("Error during login:", error);
+      console.error("Erreur durant la connexion:", error);
     }
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   // Ici, tu peux ajouter la logique de validation ou d'authentification
-  //   console.log("Email:", email);
-  //   console.log("Password:", password);
-  // };
-
   return (
-    <div className="container">
+    <div className="container-login">
+      <img
+        src="../public/Logo-SocialMedia(black).png"
+        alt="Logo du site de réseau social d'entreprise SocialMédia"
+      />
       <h1>Connectez-vous</h1>
       <div className="forms">
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form-login" onSubmit={handleSubmit}>
           <div className="form-group">
             <input
               type="email"
