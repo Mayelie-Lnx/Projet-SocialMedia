@@ -9,6 +9,9 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Hook pour la navigation
 
+  // État pour gérer l'affichage de l'alerte de succès
+  const [alertEchec, setAlertEchec] = useState(false);
+
   // Fonction de soumission du formulaire de login
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +35,7 @@ function LoginForm() {
         navigate("/home");
       } else {
         console.error("Echec connexion");
+        setAlertEchec(true); // Mise à jour de l'état en cas d'échec
       }
     } catch (error) {
       console.error("Erreur durant la connexion:", error);
@@ -45,6 +49,7 @@ function LoginForm() {
         alt="Logo du site de réseau social d'entreprise SocialMédia"
       />
       <h1>Connectez-vous</h1>
+
       <div className="forms">
         <form className="form-login" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -68,6 +73,11 @@ function LoginForm() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          {alertEchec && (
+            <div class="alert alert-danger" role="alert">
+              Identifiant ou mot de passe incorrect
+            </div>
+          )}
           <button type="submit" className="btn btn-primary">
             S'identifier
           </button>

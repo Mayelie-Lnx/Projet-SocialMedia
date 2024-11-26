@@ -3,7 +3,7 @@ const Post = require("../models/post.model");
 // Créer une publication
 exports.createPost = async (req, res, next) => {
   try {
-    const { title, content } = req.body;
+    const { content } = req.body;
     // Pour vérifier la présence d'une image
     const imageGif = req.file
       ? `${req.protocol}://${req.get("host")}/images/${req.file.filename}`
@@ -11,7 +11,7 @@ exports.createPost = async (req, res, next) => {
 
     const post = new Post({
       author: req.auth.userId, // ID de l'utilisateur connecté
-      title: title,
+      // title: title,
       content: content,
       imageGif: imageGif,
     });
@@ -28,7 +28,7 @@ exports.updatePost = async (req, res, next) => {
     //console.log("ID du post à mettre à jour:", req.params.id); // Log ID pour vérification
 
     const updatedFields = {
-      title: req.body.title,
+      // title: req.body.title,
       content: req.body.content,
     };
 
@@ -44,7 +44,7 @@ exports.updatePost = async (req, res, next) => {
       {
         new: true, // Retourne la version de la publication mise à jour
       }
-    );
+    ).populate("author", "firstname lastname");
 
     if (!updatedPost) {
       return res
@@ -79,7 +79,9 @@ exports.deletePost = async (req, res, next) => {
 
 exports.getAllPosts = async (req, res, next) => {
   try {
-    const allPosts = await Post.find().sort({ created: -1 }); // Récupère les posts par ordre décroissant de création
+    const allPosts = await Post.find()
+      .populate("author", "firstname lastname") // Peupler seulement le pseudonyme de l'auteur
+      .sort({ created: -1 }); // Récupère les posts par ordre décroissant de création
     res.status(200).json(allPosts); // Renvoie tous les posts sous forme de JSON
   } catch (error) {
     res.status(500).json({

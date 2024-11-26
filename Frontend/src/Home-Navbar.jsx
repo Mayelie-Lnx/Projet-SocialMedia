@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar() {
   const navigate = useNavigate(); // Utiliser useNavigate pour la redirection
@@ -32,23 +34,25 @@ function Navbar() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/home">
-        <img src="/Logo-SocialMedia.png" alt="" />
-      </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+      <div className="ml-auto d-flex align-items-center">
+        <Link className="navbar-brand" to="/home">
+          <img src="/Logo-SocialMedia.png" alt="" />
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo02"
+          aria-controls="navbarTogglerDemo02"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <FontAwesomeIcon icon={faBars} className="icon-burger" />
+        </button>
+      </div>
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul className="navbar-nav ml-auto mt-lg-0">
           <li className="nav-item active">
             <Link className="nav-link" to="/home">
               Accueil <span className="sr-only"></span>

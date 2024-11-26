@@ -11,7 +11,6 @@ exports.createUser = async (req, res, next) => {
     const user = new User({
       email: req.body.email,
       password: hashPassword,
-      pseudonyme: req.body.pseudonyme,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       role: req.body.role,

@@ -13,11 +13,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  pseudonyme: {
-    type: String,
-    required: true,
-    unique: true,
-  },
   firstname: {
     type: String,
     required: true,
@@ -44,10 +39,9 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.generateAuthTokenAndSaveUser = async function () {
   const authToken = jwt.sign(
-    // { _id: this.id.toString() },
     { userId: this._id.toString(), role: this.role },
-    process.env.JWT_SECRET, // Utilisation de la clé secrète définie dans le fichier .env
-    { expiresIn: "4h" } // Durée de la validation du token
+    process.env.JWT_SECRET,
+    { expiresIn: "4h" }
   );
   this.authTokens.push({ authToken });
   await this.save();

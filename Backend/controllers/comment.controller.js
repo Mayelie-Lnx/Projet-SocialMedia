@@ -66,3 +66,18 @@ exports.deleteComment = async (req, res, next) => {
     res.status(500).json({ message: "Erreur serveur", error });
   }
 };
+
+exports.getAllComments = async (req, res, next) => {
+  try {
+    const allComments = await Comment.find().populate(
+      "userId",
+      "firstname lastname"
+    ); // Peupler seulement le pseudonyme de l'auteur
+    res.status(200).json(allComments); // Renvoie tous les posts sous forme de JSON
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la récupération des commentaires",
+      error,
+    });
+  }
+};

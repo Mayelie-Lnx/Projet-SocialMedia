@@ -7,7 +7,10 @@ const VerifyAuth = require("../middleware/verifyAuth");
 // Route pour créer un commentaire (protégée par l'authentification)
 router.post("/", authMiddleware, commentCtrl.createComment);
 
-// Route pour mettre un jour une publication
+// Route pour récupérer toutes les commentaires
+router.get("/", authMiddleware, commentCtrl.getAllComments);
+
+// Route pour mettre un jour un commentaire
 router.put(
   "/:id",
   authMiddleware,
@@ -15,7 +18,7 @@ router.put(
   commentCtrl.updateComment
 );
 
-// Route pour supprimer une publication
+// Route pour supprimer un commentaire
 router.delete(
   "/:id",
   authMiddleware,

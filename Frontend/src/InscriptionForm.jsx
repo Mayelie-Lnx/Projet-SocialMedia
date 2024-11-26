@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./InscriptionForm.css";
 
 function InscriptionForm() {
   // Gérer les états pour les champs du formulaire
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [pseudonyme, setPseudonyme] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // État pour gérer l'affichage de l'alerte de succès
+  const [isSuccess, setIsSuccess] = useState(false);
 
   // Fonction de soumission du formulaire de login
   const handleSubmit = async (e) => {
@@ -25,13 +28,13 @@ function InscriptionForm() {
           password,
           firstname,
           lastname,
-          pseudonyme,
         }),
       });
       if (response.ok) {
         const data = await response.json();
         // Gérer la réponse, par exemple, stocker le token
         console.log("Inscription réussi:", data);
+        setIsSuccess(true); // Mise à jour de l'état en cas de succès
       } else {
         console.error("Echec inscription");
       }
@@ -47,6 +50,14 @@ function InscriptionForm() {
         alt="Logo du site de réseau social d'entreprise SocialMédia"
       />
       <h1>Inscrivez-vous</h1>
+
+      {isSuccess && (
+        <div className="alert alert-success" role="alert">
+          <h4 className="alert-heading">Utilisateur créé avec succès !</h4>
+          <Link to="/login">Retour à la page connexion</Link>
+        </div>
+      )}
+
       <div className="div-form">
         <form className="form-inscription" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -69,17 +80,6 @@ function InscriptionForm() {
               placeholder="Prénom"
               value={lastname}
               onChange={(e) => setLastname(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              id="InputPseudonyme"
-              aria-describedby="emailHelp"
-              placeholder="Pseudonyme"
-              value={pseudonyme}
-              onChange={(e) => setPseudonyme(e.target.value)}
             />
           </div>
           <div className="form-group">
