@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
-// import AllComments from "./Home-Comment";
+import AllComments from "./Home-Comment";
 
 function AllPosts({ post, deletePost, updatePost }) {
   const [authToken, setAuthToken] = useState(null);
@@ -174,28 +174,59 @@ function AllPosts({ post, deletePost, updatePost }) {
               </div>
 
               <div className="bg-white link-modal-comment">
-                <div className="d-flex flex-row fs-12 p-2">
+                <div className="d-flex flex-row fs-12 p-2 comments-stuff">
                   <FontAwesomeIcon
                     icon={faCommentDots}
                     className="icon-comment"
                   />
-                  {/* <AllComments postId={post._id} /> */}
-                  {/* <button
-                    className="btn btn-link"
+                  <button
+                    className="btn btn-link btn-comments-post"
                     type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target={`#collapseComment-${post._id}`}
-                    aria-expanded="false"
-                    aria-controls={`collapseComment-${post._id}`}
+                    data-bs-toggle="modal"
+                    data-bs-target={`#modalComments-${post._id}`}
                   >
-                    Commentaires
-                  </button> */}
-                  {/* <Comments
-                    // show={showCommentModal}
-                    // handleClose={handleCloseCommentModal}
-                    addNewComment={addNewComment}
-                    postId={post._id}
-                  /> */}
+                    Afficher les commentaires
+                  </button>
+                </div>
+              </div>
+              {/* Modal pour afficher les commentaires */}
+              <div
+                className="modal fade"
+                id={`modalComments-${post._id}`}
+                tabIndex="-1"
+                aria-labelledby={`modalCommentsLabel-${post._id}`}
+                aria-hidden="true"
+              >
+                <div className="modal-dialog modal-lg">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5
+                        className="modal-title"
+                        id={`modalCommentsLabel-${post._id}`}
+                      >
+                        Commentaires
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="modal-body">
+                      {/* Appel du composant AllComments */}
+                      <AllComments postId={post._id} />
+                    </div>
+                    <div className="modal-footer">
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Fermer
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

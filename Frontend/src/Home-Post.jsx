@@ -6,10 +6,7 @@ function Post({ post, addNewPost }) {
 
   // Fonction pour gérer l'envoi du formulaire
   const handleSubmit = async (e) => {
-    // e.preventDefault(); // Empêche le rechargement de la page
-
     try {
-      const authToken = localStorage.getItem("authToken"); // Récupérer le token du localStorage
       const response = await fetch("http://localhost:3000/posts", {
         method: "POST",
         headers: {
@@ -55,6 +52,15 @@ function Post({ post, addNewPost }) {
                 value={content}
                 onChange={(e) => setContent(e.target.value)} // Mettre à jour le contenu
               ></textarea>
+            </div>
+            <div className="form-group mb-3">
+              <input
+                type="file"
+                className="form-control"
+                id="fileInput"
+                accept="image/*" // Accepter uniquement les images
+                onChange={(e) => setImage(e.target.files[0])} // Mettre à jour l'image sélectionnée
+              />
             </div>
             <button type="submit" className="btn btn-primary">
               Publier

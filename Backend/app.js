@@ -32,6 +32,6 @@ app.use(express.json());
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 app.use("/comments", commentRoutes);
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static("images"));
 
 module.exports = app;

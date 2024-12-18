@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    //Array, crée un validateur qui vérifie si la valeur est dans le tableau donné.
     enum: ["user", "admin"], // Limite les valeurs possibles à "user" ou "admin"
     default: "user",
   },
@@ -50,5 +49,4 @@ userSchema.methods.generateAuthTokenAndSaveUser = async function () {
 
 userSchema.plugin(uniqueValidator);
 
-// const userSchema = mongoose.model("User", userSchema);
 module.exports = mongoose.model("User", userSchema);

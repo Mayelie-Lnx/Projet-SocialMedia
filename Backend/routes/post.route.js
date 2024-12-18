@@ -12,20 +12,9 @@ router.post("/", authMiddleware, multer, postController.createPost);
 router.get("/", authMiddleware, postController.getAllPosts);
 
 // Route pour mettre un jour une publication
-router.put(
-  "/:id",
-  authMiddleware,
-  VerifyAuth.VerifyAuthPost,
-  multer,
-  postController.updatePost
-);
+router.put("/:id",authMiddleware,VerifyAuth.VerifyAuthPost,multer,postController.updatePost);
 
 // Route pour supprimer une publication
-router.delete(
-  "/:id",
-  authMiddleware,
-  VerifyAuth.VerifyAuthPost,
-  postController.deletePost
-);
+router.delete("/:id",authMiddleware,VerifyAuth.VerifyAuthPost,postController.deletePost);
 
 module.exports = router;

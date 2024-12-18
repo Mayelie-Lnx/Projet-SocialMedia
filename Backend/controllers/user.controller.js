@@ -66,30 +66,3 @@ exports.logoutUser = async (req, res, next) => {
     res.status(500).json({ error: "Erreur lors de la déconnexion" });
   }
 };
-
-// =============================================================
-// ==================== PAS BESOIN (profil) ====================
-// =============================================================
-
-// // Récupérer le profil de l'utilisateur
-// exports.getProfile = async (req, res, next) => {
-//   try {
-//     // Récupérer l'utilisateur via l'ID stocké dans req.user (décodé depuis le JWT)
-//     const user = await User.findById(req.user.userId).select("-password"); // Ne pas inclure le mot de passe dans la réponse
-
-//     if (!user) {
-//       return res.status(404).json({ message: "Utilisateur non trouvé" });
-//     }
-
-//     // Retourner les informations du profil
-//     res.status(200).json({
-//       email: user.email,
-//       pseudonyme: user.pseudonyme,
-//       firstname: user.firstname,
-//       lastname: user.lastname,
-//       role: user.role,
-//     });
-//   } catch (error) {
-//     res.status(500).json({ message: "Echec connexion" });
-//   }
-// };

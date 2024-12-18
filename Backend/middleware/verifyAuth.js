@@ -7,7 +7,6 @@ exports.VerifyAuthPost = async (req, res, next) => {
     if (!post) {
       return res.status(404).json({ message: "Publication introuvable" });
     }
-
     // Vérifie si l'utilisateur est le créateur ou un admin
     if (
       post.author.toString() === req.auth.userId.toString() ||
@@ -27,14 +26,13 @@ exports.VerifyAuthPost = async (req, res, next) => {
 
 exports.VerifyAuthCommentUpdate = async (req, res, next) => {
   try {
-    console.log("ID du commentaire :", req.params.id); // Ajoute ceci
+    console.log("ID du commentaire :", req.params.id);
     const comment = await Comment.findById(req.params.id);
     if (!comment) {
       return res.status(404).json({ message: "Commentaire introuvable" });
     }
-    console.log("Commentaire trouvé :", comment); // Ajoute ceci
-
-    // Vérifie si l'utilisateur est le l'auteur du commentaire ou un admin
+    console.log("Commentaire trouvé :", comment);
+    // Vérifie si l'utilisateur est le l'auteur du commentaire
     if (comment.userId.toString() === req.auth.userId.toString()) {
       next(); // Passe à la suite si l'utilisateur est autorisé
     } else {
@@ -55,7 +53,6 @@ exports.VerifyAuthCommentDelete = async (req, res, next) => {
     if (!comment) {
       return res.status(404).json({ message: "Commentaire introuvable" });
     }
-
     // Vérifie si l'utilisateur est le l'auteur du commentaire ou un admin
     if (
       comment.userId.toString() === req.auth.userId.toString() ||

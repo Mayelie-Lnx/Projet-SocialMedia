@@ -209,4 +209,49 @@ nav .navbar-toggler:focus {
 .div-comment {
   align-items: center;
   display: flex;
+  flex-direction: column-reverse;
+}
+.btn-comments-post {
+  color: black;
+}
+.btn-comments-post:hover {
+  color: black;
+}
+.comments-stuff {
+  display: inline !important;
+}
+.comment-item {
+  padding: 0.3rem;
+  margin: 1rem;
+
+  border-radius: 5px;
+  background-color: rgb(240, 239, 239);
+}
+.btn-link-commenter {
+  background-color: white;
+  border: 2px solid #241c1c;
+  color: #241c1c;
+  font-weight: 600;
+  padding: 0.5rem;
+}
+.btn-link-commenter:hover {
+  background-color: #241c1c;
+  border: 2px solid #241c1c;
+  color: white;
+  text-decoration: none;
+}
+.btn-publied-comment {
+  width: 12rem;
+}
+.btn-annuler-comment {
+  width: 5rem;
+  padding: 0.6rem;
+  margin-left: 0.5rem;
+  border-color: black;
+  color: black;
+}
+.btn-annuler-comment:hover {
+  background-color: black;
+  border-color: black;
+  color: white;
 }

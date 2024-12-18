@@ -11,19 +11,9 @@ router.post("/", authMiddleware, commentCtrl.createComment);
 router.get("/", authMiddleware, commentCtrl.getAllComments);
 
 // Route pour mettre un jour un commentaire
-router.put(
-  "/:id",
-  authMiddleware,
-  VerifyAuth.VerifyAuthCommentUpdate,
-  commentCtrl.updateComment
-);
+router.put("/:id",authMiddleware,VerifyAuth.VerifyAuthCommentUpdate,commentCtrl.updateComment);
 
 // Route pour supprimer un commentaire
-router.delete(
-  "/:id",
-  authMiddleware,
-  VerifyAuth.VerifyAuthCommentDelete,
-  commentCtrl.deleteComment
-);
+router.delete("/:id",authMiddleware,VerifyAuth.VerifyAuthCommentDelete,commentCtrl.deleteComment);
 
 module.exports = router;
